@@ -8,9 +8,9 @@ const params = {
   };
 
 export const SearchBarAddress = (props) => {
-    const {selectPosition, setSelectPosition} = props
-    const [searchText, setSearchText] = useState("");
-    const [listPlace, setListPlace] = useState([]);
+  const { selectPosition, setSelectPosition } = props;
+  const [searchText, setSearchText] = useState("");
+  const [listPlace, setListPlace] = useState([]);
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
       <div style={{ display: "flex" }}>
@@ -24,7 +24,7 @@ export const SearchBarAddress = (props) => {
             value={searchText}
             onChange={(event) => {
               setSearchText(event.target.value);
-              console.log(event.target.value);
+              // console.log(event.target.value);
             }}>
 
          </input>
@@ -56,12 +56,12 @@ export const SearchBarAddress = (props) => {
             <ListGroup variant="flush">
               <button onClick={()=>{setSelectPosition(item?.place_id)}}>
               {listPlace.map((item) => {
-                return (
-                  <div key={item}>
-                    <ListGroup.Item > {item?.display_name}</ListGroup.Item>
-                  </div>
-                );
-              })}
+  return (
+    <button key={item?.place_id} onClick={()=>{setSelectPosition(item?.place_id)}}>
+      <ListGroup.Item > {item?.display_name}</ListGroup.Item>
+    </button>
+  );
+})}
               </button>
             </ListGroup>
             </div>

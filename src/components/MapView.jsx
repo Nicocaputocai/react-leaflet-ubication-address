@@ -2,31 +2,37 @@ import React, { useEffect } from "react";
 import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet"
 import L from 'leaflet'
 import '../../node_modules/leaflet/dist/leaflet.css';
-const position = [51.505, -0.09];
+
+const position =[-34.7033363,-58.3953235]
+
 function ResetCenterView(props) {
-    const { selectPosition } = props;
-    const map = useMap();
-  
-    useEffect(() => {
-      if (selectPosition) {
-        map.setView(
-          L.latLng(selectPosition?.lat, selectPosition?.lon),
-          map.getZoom(),
-          {
-            animate: true
-          }
-        )
-      }
-    }, [selectPosition]);
-  
-    return null;
+  const { selectPosition } = props;
+  const map = useMap();
+
+
+  useEffect(() => {
+    if (selectPosition) {
+      map.setView(
+        L.latLng(selectPosition?.lat, selectPosition?.lon),
+        map.getZoom(),
+        {
+          animate: true
+        }
+      )
+    }
+  }, [selectPosition]);
+
+  return null;
   }
 export const MapView = (props) => {
-    const { selectPosition } = props;
-    const locationSelection = [selectPosition?.lat, selectPosition?.lon];
-    const position =[-34.7033363,-58.3953235]
+  const { selectPosition } = props;
+  const locationSelection = [selectPosition?.lat, selectPosition?.lon];
+
+  console.log(selectPosition);
 
   return (
+
+
     <div style={{margin: 0, padding: 0, width: "100vw", height: "100vh"}}>
   <MapContainer 
   center={position} 
