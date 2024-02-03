@@ -27,6 +27,7 @@ function ResetCenterView(props) {
 export const MapView = (props) => {
   const { selectPosition } = props;
   const locationSelection = [selectPosition?.lat, selectPosition?.lon];
+  const locationDefault = position
 
   console.log(selectPosition);
 
@@ -46,11 +47,14 @@ export const MapView = (props) => {
     attribution='&copy; <a href="https://stadiamaps.com/" target="_blank">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a>'
     url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
     />
-    <Marker position={locationSelection}>
+    { locationSelection !== undefined ?
+      <Marker position={locationSelection}>
       <Popup>
         A pretty CSS3 popup. <br /> Easily customizable.
       </Popup>
-    </Marker>
+    </Marker> : <Marker position={locationDefault}></Marker>
+    }
+    
     <ResetCenterView selecPosition={selectPosition }/>
   </MapContainer>,
   </div>

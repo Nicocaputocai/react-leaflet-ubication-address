@@ -1,73 +1,66 @@
 import { useState } from "react";
-import { Form, InputGroup, Button, ListGroup } from "react-bootstrap";
+import { Form, InputGroup, Button, ListGroup, FormGroup } from "react-bootstrap";
 const NOMINATIM_BASE_URL = "http://nominatim.openstreetmap.org/search?";
-const params = {
-    q: "",
-    format: "json",
-    addressdetails: "addressdetails",
-  };
+
 
 export const SearchBarAddress = (props) => {
-  const { selectPosition, setSelectPosition } = props;
+  const { setSelectPosition } = props;
   const [searchText, setSearchText] = useState("");
   const [listPlace, setListPlace] = useState([]);
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
       <div style={{ display: "flex" }}>
-        <div className="mb-3" style={{ flex: 1 }}>
-
-          <Form.Control
-            aria-label="Default"
-            aria-describedby="inputGroup-sizing-default"
-          />
-         <input style={{ width: "100%" }}
-            value={searchText}
-            onChange={(event) => {
-              setSearchText(event.target.value);
+        <div className="mb-3" style={{ display:"flex" }}>
+         <input
+         style={{ width: "100%" }}
+         value={searchText}
+         onChange={(event) => {
+           setSearchText(event.target.value);
+         
               // console.log(event.target.value);
             }}>
 
          </input>
           <div>
-                      <div style={{ display: "flex", alignItems: "center" }}>
-            <Button variant="success" onClick={()=>{
-                const params = {
-                    q: searchText,
-                    format: "json",
-                    addressdetails: 1,
-                    polygon_geojson: 0,
-                }
-                const queryString = new URLSearchParams(params).toString();
-                const requestOptions = {
-                    method: "GET",
-                    redirect: "follow",
+                      <div style={{ alignItems: "center" }}>
+            <Button variant="success" style={{ flex: 1,}}
+            onClick={() => {
+              // Search
+              const params = {
+                q: searchText,
+                format: "json",
+                addressdetails: 1,
+                polygon_geojson: 0,
+              }
+              const queryString = new URLSearchParams(params).toString();
+              const requestOptions = {
+                method: "GET",
+                redirect: "follow",
               };
-                fetch(`${NOMINATIM_BASE_URL}${queryString}`, requestOptions)
+              fetch(`${NOMINATIM_BASE_URL}${queryString}`, requestOptions)
                 .then((response) => response.text())
                 .then((result) => {
-                    console.log(JSON.parse(result))
-                    setListPlace(JSON.parse(result))
+                  console.log(JSON.parse(result));
+                  setListPlace(JSON.parse(result));
                 })
                 .catch((err) => console.log("err: ", err));
-            }}>Success
+            }}>
+            Success
             </Button>
           </div>
           <div>
             
-  <ListGroup variant="flush">
-    {listPlace.map((item) => {
+  <FormGroup variant="flush">
+  {listPlace.map((item) => {
       return (
-        <button
-          key={item?.place_id}
-          onClick={() => {
-            setSelectPosition(item);
-          }}
-        >
-          <ListGroup.Item> {item?.display_name}</ListGroup.Item>
-        </button>
+        <div key={item?.place_id}>
+           <button onClick={() => {
+                    setSelectPosition(item);
+                  }}> {item?.display_name}</button>
+        </div>
       );
     })}
-  </ListGroup>
+  </FormGroup>
             </div>
           </div>
         </div>
