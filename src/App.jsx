@@ -16,7 +16,11 @@ function App() {
       height: '100vh'
     }}>
       <div style={{ width: "50vw" }}>
-        <MapView selectPosition={selectPosition} />
+        <MapView selectPosition={selectPosition && (
+  <div style={{ width: "50vw" }}>
+    <MapView selectPosition={selectPosition} />
+  </div>
+)} />
       </div>
       <div style={{ width: "50vw", height: "100%" }}>
         <SearchBarAddress selectPosition={selectPosition} setSelectPosition={setSelectPosition} />

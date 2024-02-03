@@ -53,17 +53,21 @@ export const SearchBarAddress = (props) => {
             </Button>
           </div>
           <div>
-            <ListGroup variant="flush">
-              <button onClick={()=>{setSelectPosition(item?.place_id)}}>
-              {listPlace.map((item) => {
-  return (
-    <button key={item?.place_id} onClick={()=>{setSelectPosition(item?.place_id)}}>
-      <ListGroup.Item > {item?.display_name}</ListGroup.Item>
-    </button>
-  );
-})}
-              </button>
-            </ListGroup>
+            
+  <ListGroup variant="flush">
+    {listPlace.map((item) => {
+      return (
+        <button
+          key={item?.place_id}
+          onClick={() => {
+            setSelectPosition(item);
+          }}
+        >
+          <ListGroup.Item> {item?.display_name}</ListGroup.Item>
+        </button>
+      );
+    })}
+  </ListGroup>
             </div>
           </div>
         </div>
