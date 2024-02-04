@@ -5,6 +5,7 @@ const NOMINATIM_BASE_URL = "http://nominatim.openstreetmap.org/search?";
 
 export const SearchBarAddress = (props) => {
   const { setSelectPosition } = props;
+  console.log(setSelectPosition);
   const [searchText, setSearchText] = useState("");
   const [listPlace, setListPlace] = useState([]);
   return (
@@ -50,17 +51,21 @@ export const SearchBarAddress = (props) => {
           </div>
           <div>
             
-  <FormGroup variant="flush">
-  {listPlace.map((item) => {
+          <ListGroup variant="flush">
+    {listPlace.map((item) => {
       return (
-        <div key={item?.place_id}>
-           <button onClick={() => {
-                    setSelectPosition(item);
-                  }}> {item?.display_name}</button>
-        </div>
+        <button
+          key={item?.place_id}
+          onClick={() => {
+            setSelectPosition(item?item:null);
+            // console.log(item);
+          }}
+        >
+          <ListGroup.Item> {item?.display_name}</ListGroup.Item>
+        </button>
       );
     })}
-  </FormGroup>
+  </ListGroup>
             </div>
           </div>
         </div>
