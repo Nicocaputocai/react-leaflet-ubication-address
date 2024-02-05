@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { Button, ListGroup } from "react-bootstrap";
 const NOMINATIM_BASE_URL = "http://nominatim.openstreetmap.org/search?";
