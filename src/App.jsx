@@ -12,15 +12,17 @@ function App() {
   return (
     <div
       style={{
-        width: "100%",
-        height: "100%",
+        width: "100vw",
+        height: "100vh",
         display: "flex",
+        margin: 0,
+        padding: 0
       }}
     >
       <div
         style={{
           width: "20vw",
-          height: "100%",
+          height: "100vh",
           float: "right",
           position: "relative",
         }}
@@ -41,7 +43,7 @@ function App() {
         // mapa si no hay select position
         <div
           style={{
-            width: "100vw",
+            width: "80vw",
             height: "100vh",
           }}
         >
@@ -57,8 +59,9 @@ function App() {
             ]}
           >
             <TileLayer
-              attribution='&copy; <a href="https://stadiamaps.com/" target="_blank">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a>'
-              url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
+             attribution='Map &copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org">OpenMapTiles</a>, <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a>, Diseño &copy <a href="https://maiken.com.ar/" target="_blank"> Maiken </a>, Desarrollo &copy <a href="https://www.divisioncode.net.ar/" target="_blank"> The Division Code </a> & &copy <a href="https://desarrolloi.org/" target="_blank"> Desarrollo i </a>'
+    
+             url="https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png?api_key={sk.eyJ1Ijoibmljb2NhcHV0b2NhaSIsImEiOiJja3RhazVpbzcwMzJhMndvNmZpNGJtbWhrIn0.YV17IMSMs1UQFzyqqhRIdA}"
             />
           </MapContainer>
         </div>

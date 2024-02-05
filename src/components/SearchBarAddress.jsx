@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { Form, InputGroup, Button, ListGroup, FormGroup } from "react-bootstrap";
+import { Button, ListGroup } from "react-bootstrap";
 const NOMINATIM_BASE_URL = "http://nominatim.openstreetmap.org/search?";
 
 
 export const SearchBarAddress = (props) => {
   const { setSelectPosition } = props;
-  console.log(setSelectPosition);
+  // console.log(setSelectPosition);
   const [searchText, setSearchText] = useState("");
   const [listPlace, setListPlace] = useState([]);
   return (
